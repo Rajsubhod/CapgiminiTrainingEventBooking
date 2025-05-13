@@ -12,7 +12,7 @@ public class EventBookingSystem {
 
     List<Attendee> attendees;
     List<Organizer> organizers;
-    List<Event> events;
+    List<jdk.jfr.Event> events;
     List<Ticket> tickets;
 
     public EventBookingSystem() {
