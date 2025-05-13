@@ -22,5 +22,17 @@ public class EventBookingSystem {
         this.tickets = new ArrayList<>();
     }
 
+    public void addEvent(Event event) {
+        events.add(event);
+    }
+
+    public void showEvents() {
+        for (Event event : events) {
+            System.out.println(event);
+        }
+    }
+
+    
+
 
 }
