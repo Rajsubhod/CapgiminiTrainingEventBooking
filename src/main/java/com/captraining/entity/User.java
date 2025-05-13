@@ -9,5 +9,5 @@ public abstract class User {
         this.name = name;
     }
 
-    abstract void showProfile();
+    public abstract void showProfile();
 }
