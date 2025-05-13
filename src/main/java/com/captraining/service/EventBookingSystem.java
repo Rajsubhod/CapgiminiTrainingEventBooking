@@ -25,8 +25,9 @@ public class EventBookingSystem {
         this.tickets = new ArrayList<>();
     }
 
-    public void saveEvents() {
+    public void saveEvents(Event event) {
     	try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("events.txt")))	{
+            events.add(event);
     		out.writeObject(events);
     	}
     	catch(IOException e) {
@@ -41,10 +42,6 @@ public class EventBookingSystem {
     	catch(Exception e) {
     		System.out.println("no saved events found.");
     	}
-    }
-	
-    public void saveEvents(Event event) {
-        events.add(event);
     }
 
     public void showEvents() {
