@@ -7,6 +7,22 @@ public class Event {
 		this.title=title;
 		this.availableTickets=availableTickets;
 	}
+	boolean isAvailable() {
+		return availableTickets>0;
+	}
+	void setAvailableTickets(int tickets) {
+		this.availableTickets=tickets;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public int getAvailabeTickets() {
+		return availableTickets;
+	}
+	@Override
+	public String toString() {
+		return "Event [title=" + title + ", availableTickets=" + availableTickets + "]";
+	}
 	
 	
 }
