@@ -51,14 +51,17 @@ public class EventBookingSystem {
 
 
 
-    public void saveEvents(Event event) {
+    public void saveEvents() {
     	try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("events.txt")))	{
-            events.add(event);
     		out.writeObject(events);
     	}
     	catch(IOException e) {
-    		e.printStackTrace();
+            System.out.println("Error saving events: " + e.getMessage());
     	}
+    }
+
+    public void addEvent(Event event) {
+        events.add(event);
     }
   
 	public void loadEvents() {

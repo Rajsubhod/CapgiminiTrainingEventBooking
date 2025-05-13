@@ -7,10 +7,10 @@ public class Event {
 		this.title=title;
 		this.availableTickets=availableTickets;
 	}
-	boolean isAvailable() {
+	public boolean isAvailable() {
 		return availableTickets>0;
 	}
-	void setAvailableTickets(int tickets) {
+	public void setAvailableTickets(int tickets) {
 		this.availableTickets=tickets;
 	}
 	public String getTitle() {
