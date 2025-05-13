@@ -26,7 +26,7 @@ public class EventBookingSystem {
     }
 
     public void saveEvents() {
-    	try(ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream("events.ser")))	{
+    	try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("events.txt")))	{
     		out.writeObject(events);
     	}
     	catch(IOException e) {
@@ -67,6 +67,10 @@ public class EventBookingSystem {
         } else if (user instanceof Organizer o) {
             addOrganizer(o);
         }
+    }
+
+    public void bookTicket(Ticket ticket) {
+        tickets.add(ticket);
     }
 
 }
