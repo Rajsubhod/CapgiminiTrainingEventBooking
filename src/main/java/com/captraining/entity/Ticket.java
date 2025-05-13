@@ -16,6 +16,6 @@ public class Ticket {
 		return status;
 	}
 	String ticketDetails() {
-		return "Ticket for "+attendee.getId()+ " to "+event.getTitle()+" -Status: "+status;
+		return "Ticket for "+attendee.id+ " to "+event.getTitle()+" -Status: "+status;
 	}
 }
