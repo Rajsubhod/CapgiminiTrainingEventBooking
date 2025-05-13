@@ -12,7 +12,6 @@ import java.util.List;
 import src.main.java.com.captraining.entity.Attendee;
 import src.main.java.com.captraining.entity.Organizer;
 import src.main.java.com.captraining.entity.Ticket;
-
 public class EventBookingSystem {
 
     List<Attendee> attendees;
@@ -26,7 +25,7 @@ public class EventBookingSystem {
         this.events = new ArrayList<>();
         this.tickets = new ArrayList<>();
     }
-    public void addEvent(Event event) {
+    public void addEvent(jdk.jfr.Event event) {
     	events.add(event);
     }
     public void saveEvents() {
@@ -37,7 +36,8 @@ public class EventBookingSystem {
     		e.printStackTrace();
     	}
     }
-    public void loadEvents() {
+  
+	public void loadEvents() {
     	try(ObjectInputStream in =new ObjectInputStream(new FileInputStream("events.ser"))){
     		events=(List<jdk.jfr.Event>)in.readObject();
     	}
