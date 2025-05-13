@@ -12,7 +12,7 @@ public class EventBookingSystem {
 
     List<Attendee> attendees;
     List<Organizer> organizers;
-    List<Event> events;
+    List<jdk.jfr.Event> events;
     List<Ticket> tickets;
 
     public EventBookingSystem() {
@@ -21,6 +21,18 @@ public class EventBookingSystem {
         this.events = new ArrayList<>();
         this.tickets = new ArrayList<>();
     }
+
+    public void addEvent(Event event) {
+        events.add(event);
+    }
+
+    public void showEvents() {
+        for (Event event : events) {
+            System.out.println(event);
+        }
+    }
+
+    
 
 
 }
