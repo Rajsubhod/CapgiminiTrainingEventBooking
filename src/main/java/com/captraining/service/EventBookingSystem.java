@@ -1,5 +1,7 @@
 package com.captraining.service;
 
+import com.captraining.entity.*;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,10 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.main.java.com.captraining.entity.Event;
-import src.main.java.com.captraining.entity.Attendee;
-import src.main.java.com.captraining.entity.Organizer;
-import src.main.java.com.captraining.entity.Ticket;
+
 public class EventBookingSystem {
 
     private List<Attendee> attendees;
@@ -44,7 +43,7 @@ public class EventBookingSystem {
     	}
     }
 	
-    public void addEvent(Event event) {
+    public void saveEvents(Event event) {
         events.add(event);
     }
 
@@ -54,8 +53,20 @@ public class EventBookingSystem {
         }
     }
 
-    public void addAttendee(Attendee attendee) {
+    private void addAttendee(Attendee attendee) {
         attendees.add(attendee);
+    }
+
+    private void addOrganizer(Organizer organizer) {
+        organizers.add(organizer);
+    }
+
+    public void registerUser(User user, Role role){
+        if(user instanceof Attendee a){
+            addAttendee(a);
+        } else if (user instanceof Organizer o) {
+            addOrganizer(o);
+        }
     }
 
 }
