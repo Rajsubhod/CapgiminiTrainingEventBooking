@@ -35,7 +35,7 @@ public class EventBookingSystem {
     }
   
 	public void loadEvents() {
-    	try(ObjectInputStream in =new ObjectInputStream(new FileInputStream("events.ser"))){
+    	try(ObjectInputStream in =new ObjectInputStream(new FileInputStream("events.txt"))){
     		events=(List<Event>)in.readObject();
     	}
     	catch(Exception e) {
@@ -69,7 +69,8 @@ public class EventBookingSystem {
         }
     }
 
-    public void bookTicket(Ticket ticket) {
+    public void bookTicket(Attendee attendee, Event event) {
+        Ticket ticket = new Ticket(attendee,event);
         tickets.add(ticket);
     }
 
