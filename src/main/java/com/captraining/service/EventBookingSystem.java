@@ -10,10 +10,10 @@ import java.util.List;
 
 public class EventBookingSystem {
 
-    List<Attendee> attendees;
-    List<Organizer> organizers;
-    List<jdk.jfr.Event> events;
-    List<Ticket> tickets;
+    private List<Attendee> attendees;
+    private List<Organizer> organizers;
+    private List<Event> events;
+    private List<Ticket> tickets;
 
     public EventBookingSystem() {
         this.attendees = new ArrayList<>();
@@ -32,7 +32,9 @@ public class EventBookingSystem {
         }
     }
 
-    
+    public void addAttendee(Attendee attendee) {
+        attendees.add(attendee);
+    }
 
 
 }
