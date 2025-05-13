@@ -25,6 +25,32 @@ public class EventBookingSystem {
         this.tickets = new ArrayList<>();
     }
 
+    
+
+    public List<Attendee> getAttendees() {
+        return attendees;
+    }
+
+
+
+    public List<Organizer> getOrganizers() {
+        return organizers;
+    }
+
+
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+
+
     public void saveEvents(Event event) {
     	try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("events.txt")))	{
             events.add(event);

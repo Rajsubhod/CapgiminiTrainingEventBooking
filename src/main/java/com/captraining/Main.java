@@ -3,6 +3,8 @@ package com.captraining;
 import com.captraining.dao.Admin;
 import com.captraining.entity.Attendee;
 import com.captraining.entity.Event;
+import com.captraining.entity.Role;
+import com.captraining.entity.User;
 import com.captraining.exception.InvalidBookingException;
 import com.captraining.service.EventBookingSystem;
 import java.util.Scanner;
@@ -23,7 +25,8 @@ public class Main {
                     System.out.println("Enter Attendant ID ");
                     System.out.print("Enter Attendee Name: ");
                     String aname = sc.nextLine();
-                    system.registerUser(new Attendee(aid, aname));
+                    User user = new Attendee(aname, aname);
+                    system.registerUser(user, Role.Attendee);
                     break;
                     case 2:
                         System.out.print("Enter Event Title: ");
@@ -31,25 +34,25 @@ public class Main {
                         System.out.print("Enter Available Tickets: ");
                         int tickets = sc.nextInt();
                         sc.nextLine();
-                        system.addEvent(new Event(title, tickets));
+                        system.saveEvents(new Event(title, tickets));
                         break;
                     case 3:
                         System.out.print("Enter Attendee ID: ");
                         String id = sc.nextLine();
                         Attendee found = null;
                         for (Attendee a : system.getAttendees()) {
-                            if (a.id.equals(id)) {
+                            if (a.getId().equals(id)) {
                                 found = a;
                                 break;
                             }
                         }
                         if (found == null) {
                             System.out.println("Attendee not found.");
-                            break;
+                            throw new RuntimeException("Id Not Found");
                         }
                         System.out.print("Enter Event Title to Book: ");
                         String etitle = sc.nextLine();
-                        system.bookTicket(found, etitle);
+                        system.bookTicket();
                         break;    
                     case 4:
                     system.showEvents();
