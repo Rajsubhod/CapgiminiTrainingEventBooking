@@ -1,12 +1,10 @@
 package com.captraining.service;
 
 import com.captraining.entity.*;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +50,12 @@ public class EventBookingSystem {
 
 
     public void saveEvents() {
-    	try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("events.txt")))	{
-    		out.writeObject(events);
-    	}
-    	catch(IOException e) {
-            System.out.println("Error saving events: " + e.getMessage());
-    	}
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File("events.json"), events);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addEvent(Event event) {
@@ -65,8 +63,10 @@ public class EventBookingSystem {
     }
   
 	public void loadEvents() {
-    	try(ObjectInputStream in =new ObjectInputStream(new FileInputStream("events.txt"))){
-    		events=(List<Event>)in.readObject();
+    	try{
+            ObjectMapper objectMapper = new ObjectMapper();
+            events = objectMapper.readValue(new File("events.json"), new TypeReference<>() {
+            });
     	}
     	catch(Exception e) {
     		System.out.println("no saved events found.");

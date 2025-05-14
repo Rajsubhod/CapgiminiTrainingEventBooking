@@ -14,7 +14,7 @@ public class Main {
         system.loadEvents();
         Scanner sc = new Scanner(System.in);
         while(true){
-             System.out.println("\n1. Register Attendee\n2. Add Event\n3. Book Ticket\n4. Show Events\n6. Save & Exit");
+             System.out.println("\n1. Register Attendee\n2. Add Event\n3. Book Ticket\n4. Show Events\n5. Save \n6.Exit");
              System.out.println("Choose Option");
              int choice = sc.nextInt();
              sc.nextLine();
@@ -22,9 +22,10 @@ public class Main {
                 switch(choice){
                     case 1 -> {
                         System.out.println("Enter Attendant ID ");
+                        String id = sc.nextLine();
                         System.out.print("Enter Attendee Name: ");
                         String aname = sc.nextLine();
-                        User user = new Attendee(aname, aname);
+                        User user = new Attendee(id, aname);
                         system.registerUser(user, Role.Attendee);
                     }
                     case 2 -> {
